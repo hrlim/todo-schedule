@@ -1,6 +1,5 @@
 package com.tistory.hrlim.service;
 
-import com.tistory.hrlim.controller.TodoController;
 import com.tistory.hrlim.model.domain.TodoEntity;
 import com.tistory.hrlim.model.payload.TodoRequest;
 import com.tistory.hrlim.repository.TodoRepository;
@@ -11,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -53,7 +51,9 @@ public class TodoService {
         if (todoRequest.getImportant() != 0) {
             todoEntity.setImportant(todoRequest.getImportant());
         }
-        todoEntity.setCompleted(todoRequest.getCompleted());
+        if (todoRequest.getCompleted() != null) {
+            todoEntity.setCompleted(todoRequest.getCompleted());
+        }
         return this.todoRepository.save(todoEntity);
     }
 

@@ -33,8 +33,8 @@ public class TodoController {
                 System.out.println("field : " + fieldError.getField());
                 System.out.println(message);
 
-                sb.append("field : " + fieldError.getField());
-                sb.append(", message : " + message);
+                sb.append("field : ").append(fieldError.getField());
+                sb.append(", message : ").append(message);
                 sb.append(System.lineSeparator());
 
             });
@@ -51,7 +51,7 @@ public class TodoController {
         return ResponseEntity.ok(new TodoResponse(todoEntity));
     }
 
-    @GetMapping("/month/{month}}")
+    @GetMapping("/month/{month}")
     public ResponseEntity<List<TodoResponse>> searchById(@PathVariable String month){
         List<TodoEntity> list = this.todoService.searchByMonth(month);
         List<TodoResponse> responses = list.stream().map(TodoResponse::new).collect(Collectors.toList());

@@ -18,6 +18,7 @@ public class TodoResponse {
     private String title;
     private Boolean completed;
     private LocalDateTime expiredAt;
+    private int important;
     private String url;
 
     public TodoResponse(TodoEntity todoEntity){
@@ -25,6 +26,7 @@ public class TodoResponse {
         this.title = todoEntity.getTitle();
         this.completed = todoEntity.getCompleted();
         this.expiredAt = todoEntity.getExpiredAt();
+        this.important = todoEntity.getImportant();
         this.url = "http://localhost:8080/" + this.id;
     }
 }

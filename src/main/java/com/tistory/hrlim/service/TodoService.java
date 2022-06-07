@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -60,6 +61,12 @@ public class TodoService {
     // To Do 특정 아이템 삭제
     public void deleteById(Long id){
         this.todoRepository.deleteById(id);
+    }
+
+    // To Do 특정달 아이템 삭제
+    @Transactional
+    public void deleteByMonth(String yearMonth){
+        this.todoRepository.deleteAllByExpiredAt(TimeUtils.toLocalDateTime(yearMonth));
     }
 
     // To Do 전체 삭제

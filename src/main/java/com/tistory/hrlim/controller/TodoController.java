@@ -78,6 +78,12 @@ public class TodoController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/delete-month/{yearMonth}")
+    public ResponseEntity<?> delete(@PathVariable String yearMonth){
+        this.todoService.deleteByMonth(yearMonth);
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping("/delete-all")
     public ResponseEntity<?> deleteAll(){
         this.todoService.deleteAll();

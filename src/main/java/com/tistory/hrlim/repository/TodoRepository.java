@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
     List<TodoEntity> findByExpiredAt(LocalDateTime localDateTime);
+    void deleteAllByExpiredAt(LocalDateTime localDateTime);
 }

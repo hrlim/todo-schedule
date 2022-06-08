@@ -13,11 +13,10 @@ public class TimeUtils {
                 .toLocalDateTime();
     }
 
-    public static LocalDateTime toLocalDateTime(String yearMonth) {
+    public static LocalDate toLocalDate(String yearMonth) {
 
         LocalDate localDate = LocalDate.parse(yearMonth + "01", DateTimeFormatter.BASIC_ISO_DATE);
-        LocalDateTime localDateTime = localDate.atStartOfDay();
-        return  localDateTime;
+        return  localDate;
 
     }
 

@@ -1,6 +1,6 @@
 package com.tistory.hrlim.controller;
 
-import com.tistory.hrlim.model.domain.TodoEntity;
+import com.tistory.hrlim.model.domain.Todo;
 import com.tistory.hrlim.model.payload.TodoRequest;
 import com.tistory.hrlim.model.payload.TodoResponse;
 import com.tistory.hrlim.service.TodoService;
@@ -41,19 +41,19 @@ public class TodoController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(sb.toString());
         }
 
-        TodoEntity todoEntity = this.todoService.create(todoRequest);
+        Todo todoEntity = this.todoService.create(todoRequest);
         return ResponseEntity.ok(new TodoResponse(todoEntity));
     }
 
     @GetMapping("/{todoId}")
     public ResponseEntity<TodoResponse> searchById(@PathVariable long todoId){
-        TodoEntity todoEntity = this.todoService.searchById(todoId);
+        Todo todoEntity = this.todoService.searchById(todoId);
         return ResponseEntity.ok(new TodoResponse(todoEntity));
     }
 
     @GetMapping("/month/{month}")
     public ResponseEntity<List<TodoResponse>> searchById(@PathVariable String month){
-        List<TodoEntity> list = this.todoService.searchByMonth(month);
+        List<Todo> list = this.todoService.searchByMonth(month);
         List<TodoResponse> responses = list.stream().map(TodoResponse::new).collect(Collectors.toList());
         return ResponseEntity.ok(responses);
     }
@@ -61,14 +61,14 @@ public class TodoController {
 
     @GetMapping("/show-all")
     public ResponseEntity<List<TodoResponse>> searchAll(){
-        List<TodoEntity> list = this.todoService.searchAll();
+        List<Todo> list = this.todoService.searchAll();
         List<TodoResponse> responses = list.stream().map(TodoResponse::new).collect(Collectors.toList());
         return ResponseEntity.ok(responses);
     }
 
     @PatchMapping("/update/{todoId}")
     public ResponseEntity<TodoResponse> updateById(@PathVariable long todoId, @RequestBody TodoRequest todoRequest){
-        TodoEntity todoEntity = this.todoService.updateById(todoId, todoRequest);
+        Todo todoEntity = this.todoService.updateById(todoId, todoRequest);
         return ResponseEntity.ok(new TodoResponse(todoEntity));
     }
 

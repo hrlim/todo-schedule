@@ -1,41 +1,36 @@
 package com.tistory.hrlim.model.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class TodoEntity {
+public class Todo extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+//    private Calendar calendar;
+
     @NonNull
     private String title;
 
     @NonNull
-    private LocalDateTime expiredAt;
+    private LocalDate expiredMonth;
 
     private int important;
 
-    private Boolean completed;
-
-    @NonNull
-    private LocalDateTime createdAt;
-
-    @NonNull
-    private LocalDateTime updatedAt;
+    private boolean completed;
 
 }

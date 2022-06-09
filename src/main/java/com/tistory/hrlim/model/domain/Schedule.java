@@ -18,7 +18,8 @@ public class Schedule extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    private Calendar calendar;
+    @ManyToOne
+    private Calendar calendar;
 
     private long colorId;
 

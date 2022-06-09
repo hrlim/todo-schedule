@@ -2,10 +2,7 @@ package com.tistory.hrlim.model.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import java.time.LocalDate;
 
@@ -21,7 +18,8 @@ public class Todo extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    private Calendar calendar;
+    @ManyToOne
+    private Calendar calendar;
 
     @NonNull
     private String title;

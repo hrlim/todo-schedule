@@ -3,6 +3,8 @@ package com.tistory.hrlim.model.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @ToString(callSuper = true)
@@ -21,4 +23,20 @@ public class Calendar extends BaseEntity {
     private User user;
 
     private String name;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "calendar_id", insertable = false, updatable = false)
+    private List<Memo> todos = new ArrayList<>();
+
+//    @OneToMany
+//    @JoinColumn(name = "calendar_id", insertable = false, updatable = false)
+//    private List<Todo> memos = new ArrayList<>();
+
+//    @OneToMany(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "calendar_id", insertable = false, updatable = false)
+//    private List<Schedule> schedules = new ArrayList<>();
+
+//    @OneToMany(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "calendar_id", insertable = false, updatable = false)
+//    private List<DailyPlan> dailyPlans = new ArrayList<>();
 }

@@ -1,12 +1,11 @@
 package com.tistory.hrlim.model.domain;
 
+import com.tistory.hrlim.model.domain.common.File;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @ToString(callSuper = true)
@@ -20,7 +19,8 @@ public class DailyPlan extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    private Calendar calendar;
+    @ManyToOne
+    private Calendar calendar;
 
     private long categoryId;
 
@@ -30,6 +30,7 @@ public class DailyPlan extends BaseEntity {
 
     private boolean completed;
 
-//    private List<File> fileIds;
+//    @OneToMany
+//    private List<File> files;
 }
 

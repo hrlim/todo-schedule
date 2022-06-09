@@ -2,10 +2,7 @@ package com.tistory.hrlim.model.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalTime;
 
 @Data
@@ -20,7 +17,8 @@ public class Memo extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    private Calendar calendar;
+    @ManyToOne
+    private Calendar calendar;
 
     private LocalTime expiredMonth;
 
